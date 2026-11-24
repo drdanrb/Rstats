@@ -1,0 +1,240 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>Rstats — anova example</title>
+<style>body{font:16px system-ui,sans-serif;color:#183047;max-width:1120px;margin:40px auto;padding:0 20px}h1,h2,h3{color:#164e63}table{border-collapse:collapse;display:block;overflow:auto}td,th{padding:9px 14px;text-align:right;border-bottom:1px solid #dae2e8}th{background:#eef4f6}li{margin:12px 0;line-height:1.5}pre{padding:20px;background:#eef4f6;border-radius:8px;overflow:auto}</style>
+<h1>Rstats: one command, a complete report</h1>
+<p>Synthetic teaching data from students.csv. This report is static; tables remain full-precision dataframes in Python.</p>
+<pre>rs.aov('score ~ group', data=df, posthocifsig=True)</pre><section><h2>ANOVA — between-subjects</h2><h3>Sample</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>input_rows</th>
+      <th>analyzed_rows</th>
+      <th>excluded_rows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>150</td>
+      <td>150</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table><h3>Group Descriptives</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>n</th>
+      <th>mean</th>
+      <th>sd</th>
+      <th>median</th>
+      <th>mean_ci_low</th>
+      <th>mean_ci_high</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>control</td>
+      <td>50</td>
+      <td>55.809</td>
+      <td>9.988</td>
+      <td>56.075</td>
+      <td>52.970</td>
+      <td>58.647</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>practice</td>
+      <td>50</td>
+      <td>59.718</td>
+      <td>9.627</td>
+      <td>58.265</td>
+      <td>56.982</td>
+      <td>62.454</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>tutoring</td>
+      <td>50</td>
+      <td>67.096</td>
+      <td>11.249</td>
+      <td>65.260</td>
+      <td>63.899</td>
+      <td>70.293</td>
+    </tr>
+  </tbody>
+</table><h3>Coding</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>predictor</th>
+      <th>reference</th>
+      <th>levels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>group</td>
+      <td>control</td>
+      <td>control, practice, tutoring</td>
+    </tr>
+  </tbody>
+</table><h3>Model</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>F</th>
+      <th>df_model</th>
+      <th>df_residual</th>
+      <th>p</th>
+      <th>r_squared</th>
+      <th>adjusted_r_squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>150</td>
+      <td>15.450</td>
+      <td>2.000</td>
+      <td>147.000</td>
+      <td>&lt; .001</td>
+      <td>0.174</td>
+      <td>0.162</td>
+    </tr>
+  </tbody>
+</table><h3>Diagnostics</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>diagnostic</th>
+      <th>statistic</th>
+      <th>p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Residual normality (Jarque–Bera)</td>
+      <td>0.347</td>
+      <td>0.841</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Constant variance (Breusch–Pagan F)</td>
+      <td>0.769</td>
+      <td>0.465</td>
+    </tr>
+  </tbody>
+</table><h3>Anova</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>effect</th>
+      <th>sum_sq</th>
+      <th>df_numerator</th>
+      <th>F</th>
+      <th>p</th>
+      <th>mean_sq</th>
+      <th>df_denominator</th>
+      <th>partial_eta_squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>group</td>
+      <td>3285.349</td>
+      <td>2.000</td>
+      <td>15.450</td>
+      <td>&lt; .001</td>
+      <td>1642.674</td>
+      <td>147.000</td>
+      <td>0.174</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Residual</td>
+      <td>15629.682</td>
+      <td>147.000</td>
+      <td>—</td>
+      <td>—</td>
+      <td>106.324</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table><h3>Posthoc</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group_a</th>
+      <th>group_b</th>
+      <th>estimate</th>
+      <th>p_adjusted</th>
+      <th>ci_low</th>
+      <th>ci_high</th>
+      <th>family</th>
+      <th>target</th>
+      <th>condition</th>
+      <th>test</th>
+      <th>adjustment</th>
+      <th>ci_coverage</th>
+      <th>significant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>control</td>
+      <td>practice</td>
+      <td>-3.910</td>
+      <td>0.143</td>
+      <td>-8.793</td>
+      <td>0.973</td>
+      <td>group</td>
+      <td>group</td>
+      <td>all observations</td>
+      <td>tukey</td>
+      <td>tukey</td>
+      <td>simultaneous</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>control</td>
+      <td>tutoring</td>
+      <td>-11.287</td>
+      <td>&lt; .001</td>
+      <td>-16.170</td>
+      <td>-6.405</td>
+      <td>group</td>
+      <td>group</td>
+      <td>all observations</td>
+      <td>tukey</td>
+      <td>tukey</td>
+      <td>simultaneous</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>practice</td>
+      <td>tutoring</td>
+      <td>-7.378</td>
+      <td>0.001</td>
+      <td>-12.260</td>
+      <td>-2.495</td>
+      <td>group</td>
+      <td>group</td>
+      <td>all observations</td>
+      <td>tukey</td>
+      <td>tukey</td>
+      <td>simultaneous</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table><h3>Notes</h3><ul><li>Analyzed 150 of 150 rows; excluded 0 incomplete rows.</li><li>5 observations have Cook&#x27;s distance &gt; 4/n; inspect influential cases.</li><li>Diagnostics do not change the fitted method. Independence follows from the study design.</li><li>Type 2 sums of squares; treatment contrasts. Group descriptives are unadjusted; ANCOVA comparisons use covariate-adjusted marginal means.</li><li>Post hoc method: tukey; comparisons run only for relevant omnibus p &lt; 0.05. Adjustment families include all comparisons generated for each triggering effect.</li><li>Mean differences are not causal effects unless justified by the study design. Assumption diagnostics never automatically replace the requested test.</li></ul></section></html>

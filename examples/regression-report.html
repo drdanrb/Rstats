@@ -1,0 +1,187 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>Rstats — regression example</title>
+<style>body{font:16px system-ui,sans-serif;color:#183047;max-width:1120px;margin:40px auto;padding:0 20px}h1,h2,h3{color:#164e63}table{border-collapse:collapse;display:block;overflow:auto}td,th{padding:9px 14px;text-align:right;border-bottom:1px solid #dae2e8}th{background:#eef4f6}li{margin:12px 0;line-height:1.5}pre{padding:20px;background:#eef4f6;border-radius:8px;overflow:auto}</style>
+<h1>Rstats: one command, a complete report</h1>
+<p>Synthetic teaching data from students.csv. This report is static; tables remain full-precision dataframes in Python.</p>
+<pre>rs.lm('score ~ study_hours + group', data=df)</pre><section><h2>Linear regression (OLS)</h2><h3>Sample</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>input_rows</th>
+      <th>analyzed_rows</th>
+      <th>excluded_rows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>150</td>
+      <td>150</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table><h3>Model</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>F</th>
+      <th>df_model</th>
+      <th>df_residual</th>
+      <th>p</th>
+      <th>r_squared</th>
+      <th>adjusted_r_squared</th>
+      <th>residual_sd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>150</td>
+      <td>49.475</td>
+      <td>3.000</td>
+      <td>146.000</td>
+      <td>&lt; .001</td>
+      <td>0.504</td>
+      <td>0.494</td>
+      <td>8.015</td>
+    </tr>
+  </tbody>
+</table><h3>Coefficients</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>estimate</th>
+      <th>std_error</th>
+      <th>t</th>
+      <th>p</th>
+      <th>ci_low</th>
+      <th>ci_high</th>
+    </tr>
+    <tr>
+      <th>term</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>41.775</td>
+      <td>1.819</td>
+      <td>22.964</td>
+      <td>&lt; .001</td>
+      <td>38.179</td>
+      <td>45.370</td>
+    </tr>
+    <tr>
+      <th>group[T.practice]</th>
+      <td>3.628</td>
+      <td>1.603</td>
+      <td>2.263</td>
+      <td>0.025</td>
+      <td>0.459</td>
+      <td>6.797</td>
+    </tr>
+    <tr>
+      <th>group[T.tutoring]</th>
+      <td>10.451</td>
+      <td>1.605</td>
+      <td>6.511</td>
+      <td>&lt; .001</td>
+      <td>7.279</td>
+      <td>13.624</td>
+    </tr>
+    <tr>
+      <th>study_hours</th>
+      <td>2.796</td>
+      <td>0.283</td>
+      <td>9.863</td>
+      <td>&lt; .001</td>
+      <td>2.236</td>
+      <td>3.356</td>
+    </tr>
+  </tbody>
+</table><h3>Descriptives</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>score</th>
+      <td>150.000</td>
+      <td>60.874</td>
+      <td>11.267</td>
+      <td>37.250</td>
+      <td>52.538</td>
+      <td>60.265</td>
+      <td>67.907</td>
+      <td>91.160</td>
+    </tr>
+    <tr>
+      <th>study_hours</th>
+      <td>150.000</td>
+      <td>5.152</td>
+      <td>2.320</td>
+      <td>1.020</td>
+      <td>3.240</td>
+      <td>5.395</td>
+      <td>7.055</td>
+      <td>8.910</td>
+    </tr>
+  </tbody>
+</table><h3>Diagnostics</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>diagnostic</th>
+      <th>statistic</th>
+      <th>p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Residual normality (Jarque–Bera)</td>
+      <td>1.202</td>
+      <td>0.548</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Constant variance (Breusch–Pagan F)</td>
+      <td>0.651</td>
+      <td>0.584</td>
+    </tr>
+  </tbody>
+</table><h3>Coding</h3><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>predictor</th>
+      <th>reference</th>
+      <th>levels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>group</td>
+      <td>control</td>
+      <td>control, practice, tutoring</td>
+    </tr>
+  </tbody>
+</table><h3>Notes</h3><ul><li>Analyzed 150 of 150 rows; excluded 0 incomplete rows.</li><li>6 observations have Cook&#x27;s distance &gt; 4/n; inspect influential cases.</li><li>Diagnostics do not change the fitted method. Independence follows from the study design.</li><li>OLS with 95% confidence intervals. Coefficients are adjusted for the other predictors.</li></ul></section></html>
