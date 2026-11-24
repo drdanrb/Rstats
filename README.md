@@ -2,6 +2,8 @@
 
 **Familiar commands. Complete statistical reports.**
 
+[Open the teaching notebook in Google Colab](https://colab.research.google.com/github/drdanrb/Rstats/blob/main/examples/quickstart.ipynb)
+
 Rstats gives Python students and academics a short path from a pandas dataframe
 to detailed, reusable statistical results. One analysis call includes the
 tables, uncertainty, coding, sample accounting, and diagnostic notes that would
@@ -11,10 +13,10 @@ otherwise require several separate calls. Plot independently with `vis()`.
 
 Python 3.12+; see CI for tested versions. This is an early research/teaching
 release, not a package published on PyPI. **Do not install the unrelated
-`rstats` PyPI package.** Install the supplied wheel:
+`rstats` PyPI package.** Install directly from GitHub:
 
 ```bash
-python -m pip install ./dist/rstats_python-0.1.0-py3-none-any.whl
+python -m pip install git+https://github.com/drdanrb/Rstats.git
 ```
 
 Or from the root of the supplied source checkout:
@@ -24,10 +26,10 @@ python -m pip install -e ".[dev]"
 ```
 
 The distribution is named `rstats-python`; the import is `rstats`. No R runtime
-is required to use the library. The intended repository is
-`drdanrb/Rstats`, but repository creation was denied by the connected GitHub
-integration. This handoff includes the complete local Git repository and
-distribution artifacts; no live GitHub repository is claimed.
+is required to use the library. In Colab, prefix the installation command with
+`%pip` instead of `python -m pip`, or open the teaching notebook above and choose
+**Runtime → Run all**. The notebook installs Rstats if necessary and downloads
+the synthetic example data automatically; no file uploads are needed.
 
 ## One-line analyses
 
@@ -35,7 +37,7 @@ distribution artifacts; no live GitHub repository is claimed.
 import pandas as pd
 import rstats as rs
 
-df = pd.read_csv("examples/students.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/drdanrb/Rstats/main/examples/students.csv")
 
 rs.descriptives(data=df, columns=["score", "study_hours"], by="group")
 rs.table("group ~ passed", data=df, percent="row")

@@ -58,10 +58,13 @@ def datasets():
 def notebook():
     cells = [
         nbf.v4.new_markdown_cell(
-            "# Rstats: one line, a full report\n\nSynthetic teaching data. Install this checkout with `pip install -e .`. In Colab, install the repository after it is available on GitHub, then upload the two example CSVs."
+            "# Rstats: one line, a full report\n\nChoose **Runtime → Run all** in Google Colab. The first cell installs Rstats if needed; the next cell loads synthetic teaching datasets automatically. No file uploads or R installation are needed."
         ),
         nbf.v4.new_code_cell(
-            "%matplotlib inline\nfrom pathlib import Path\nimport pandas as pd\nimport rstats as rs\n\nexamples = Path('examples') if Path('examples/students.csv').exists() else Path('.')\ndf = pd.read_csv(examples / 'students.csv')\nlong_df = pd.read_csv(examples / 'longitudinal.csv')\nlong_df['time'] = pd.Categorical(long_df['time'], categories=['baseline', 'midterm', 'final'], ordered=True)\ndf.head()"
+            "import importlib.util\n\nif importlib.util.find_spec('rstats') is None:\n    %pip install -q git+https://github.com/drdanrb/Rstats.git"
+        ),
+        nbf.v4.new_code_cell(
+            "%matplotlib inline\nfrom pathlib import Path\nimport pandas as pd\nimport rstats as rs\n\nexamples = Path('examples') if Path('examples/students.csv').exists() else Path('.')\nsource = str(examples) if (examples / 'students.csv').exists() else 'https://raw.githubusercontent.com/drdanrb/Rstats/main/examples'\ndf = pd.read_csv(f'{source}/students.csv')\nlong_df = pd.read_csv(f'{source}/longitudinal.csv')\nlong_df['time'] = pd.Categorical(long_df['time'], categories=['baseline', 'midterm', 'final'], ordered=True)\ndf.head()"
         ),
         nbf.v4.new_markdown_cell(
             "## 1. Describe and tabulate\nMissingness and denominators are part of the report."
