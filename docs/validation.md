@@ -57,7 +57,8 @@ Git bundle preserves the initial commit/history and can be restored with:
 git clone Rstats.bundle Rstats
 ```
 
-Public PyPI publication is not performed. `rstats-python` had no matching
-distribution on the configured index during implementation, but that check does
-not reserve its name. The unrelated `rstats` distribution must not be used as an
-installation shortcut.
+Public PyPI publication is prepared under the distribution name `rstatspython`,
+with a Trusted Publishing workflow. The PyPI JSON endpoint returned 404 during
+the name check; that does not reserve its name. Owner-side pending-publisher
+setup is required before the first upload. See [publishing.md](publishing.md).
+The unrelated `rstats` distribution must not be used as an installation shortcut.

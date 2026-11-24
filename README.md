@@ -25,11 +25,17 @@ Or from the root of the supplied source checkout:
 python -m pip install -e ".[dev]"
 ```
 
-The distribution is named `rstats-python`; the import is `rstats`. No R runtime
+The distribution is named `rstatspython`; the import is `rstats`. No R runtime
 is required to use the library. In Colab, prefix the installation command with
 `%pip` instead of `python -m pip`, or open the teaching notebook above and choose
 **Runtime → Run all**. The notebook installs Rstats if necessary and downloads
 the synthetic example data automatically; no file uploads are needed.
+
+PyPI publishing is prepared but awaits the owner's one-time Trusted Publisher
+setup. After the first successful publication, students will be able to use
+`pip install rstatspython` (or `%pip install rstatspython` in Colab).
+Until then, use the working GitHub installation above. See the
+[publishing instructions](docs/publishing.md).
 
 ## One-line analyses
 

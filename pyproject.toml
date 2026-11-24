@@ -3,7 +3,7 @@ requires = ["hatchling>=1.26"]
 build-backend = "hatchling.build"
 
 [project]
-name = "rstats-python"
+name = "rstatspython"
 version = "0.1.0"
 description = "Familiar commands. Complete statistical reports."
 readme = "README.md"
@@ -24,7 +24,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.11", "build>=1.2", "nbformat>=5.10", "nbclient>=0.10", "ipykernel>=6", "python-pptx>=1"]
+dev = ["pytest>=8", "ruff>=0.11", "build>=1.2", "twine>=6", "nbformat>=5.10", "nbclient>=0.10", "ipykernel>=6", "python-pptx>=1"]
 
 [project.urls]
 Repository = "https://github.com/drdanrb/Rstats"
